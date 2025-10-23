@@ -1,0 +1,127 @@
+:root {
+  --baseBackground: #151625;
+  --keyboardBackground: #1b1e2d;
+  --desktopMenuWindowBackground: #262a3b;
+  --modalPopupBackground: #1d202f;
+  --modalDrawerBackground: #262a3b;
+  --modalFullscreenBackground: #1d202f;
+  --inputFill: var(--blueish10);
+  --hintFill: #2e3145;
+  --accentFill: #2970ff;
+  --commonSolidBackground: var(--black20);
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(/src/assets/fonts/400.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(/src/assets/fonts/500.woff2) format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(/src/assets/fonts/600.woff2) format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(/src/assets/fonts/700.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(/src/assets/fonts/800.woff2) format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: fallback;
+}
+:root {
+  --pillBorderRadius: 9999px;
+  --circleBorderRadius: 50%;
+  --moneyGreen: #7cea6a;
+  --black20: rgba(0, 0, 0, 0.2);
+  --black10: rgba(0, 0, 0, 0.1019607843);
+  --blueish07: rgba(184, 201, 251, 0.0705882353);
+  --blueish10: rgba(184, 201, 251, 0.1019607843);
+  --blueish15: rgba(184, 201, 251, 0.1490196078);
+  --blueish50: rgba(184, 201, 251, 0.5019607843);
+  --blueish70: rgba(192, 207, 251, 0.7490196078);
+  --blueish75: rgba(192, 207, 251, 0.7490196078);
+  --blueish90: rgba(231, 237, 254, 0.8980392157);
+  --zoom: 1;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar,
+*::after::-webkit-scrollbar,
+*::before::-webkit-scrollbar {
+  display: none;
+}
+body {
+  margin: 0 auto;
+  background-color: var(--baseBackground);
+  font-family: Inter, sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+app {
+  display: block;
+  width: 100vw;
+}
+span {
+  display: block;
+}
+ul {
+  list-style: none;
+}
+a,
+a:checked {
+  color: inherit;
+  text-decoration: none;
+}
+input,
+button,
+textarea {
+  outline: none;
+  border: none;
+  -webkit-text-size-adjust: 100%;
+  font-family: Inter, sans-serif;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+iframe {
+  border: none;
+}
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}

@@ -1,0 +1,249 @@
+import { useSelector } from "react-redux";
+import { useSound } from "../../context/ApiProvider";
+import { Settings } from "../../api";
+
+const Navbar = () => {
+  const { sound, setSound } = useSound();
+  const { balance, token } = useSelector((state) => state.auth);
+
+  const handleSoundToggle = () => {
+    if (sound) {
+      sessionStorage.setItem("sound", false);
+      setSound(false);
+    } else {
+      sessionStorage.removeItem("sound");
+      setSound(true);
+    }
+  };
+
+  const handleOpenLobby = () => {
+    const url = `${Settings.lobby}/${token}`;
+    window.location.href = url;
+  };
+  return (
+    <div className="wrapper_rLcbKXt0xs header_mnJppcDha1">
+      <header className="wrapper_qdFb5fDYKR wrapperBordered_pEAusZ4OJ4">
+        <div style={{ marginRight: "auto" }}>
+          <div className="logo_wHEe1zdRx_">
+            <img
+              alt="logo"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTIiIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCA5MiAyOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMuODE0N2UtMDYgMTguOVY5LjFIMi4zMzMzNFYxMC41SDMuNVYxMS45SDQuNjY2NjdWMTAuNUg1LjgzMzM0VjkuMUg4LjE2NjY3VjE4LjlINS44MzMzNFYxMy4zSDQuNjY2NjdWMTYuMUgzLjVWMTMuM0gyLjMzMzM0VjE4LjlIMy44MTQ3ZS0wNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik05LjYzNzk3IDE4LjlWMTcuNUgxMS45NzEzVjEwLjVIOS42Mzc5N1Y5LjFIMTYuNjM4VjEwLjVIMTQuMzA0NlYxNy41SDE2LjYzOFYxOC45SDkuNjM3OTdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTcuOTkyNiAxOC45VjkuMUgyMC4zMjU5VjEwLjVIMjEuNDkyNlYxMS45SDIyLjY1OTNWMTMuM0gyMy44MjU5VjkuMUgyNi4xNTkzVjE4LjlIMjMuODI1OVYxNi4xSDIyLjY1OTNWMTQuN0gyMS40OTI2VjEzLjNIMjAuMzI1OVYxOC45SDE3Ljk5MjZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjcuMzM4OSAxOC45VjkuMUgzNS41MDU2VjEwLjVIMjkuNjcyMlYxMy4zSDM0LjMzODlWMTQuN0gyOS42NzIyVjE3LjVIMzUuNTA1NlYxOC45SDI3LjMzODlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzcuODUxOSAxOC45VjE3LjVIMzYuNjg1MlYxNi4xSDM5LjAxODVWMTcuNUg0Mi41MTg1VjE0LjdIMzcuODUxOVYxMy4zSDM2LjY4NTJWMTAuNUgzNy44NTE5VjkuMUg0My42ODUyVjEwLjVINDQuODUxOVYxMS45SDQyLjUxODVWMTAuNUgzOS4wMTg1VjEzLjNINDMuNjg1MlYxNC43SDQ0Ljg1MTlWMTcuNUg0My42ODUyVjE4LjlIMzcuODUxOVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00Ni4zODE1IDE4LjlWOS4xSDUzLjM4MTVWMTAuNUg1NC41NDgyVjEzLjNINTMuMzgxNVYxNC43SDU0LjU0ODJWMTcuNUg1My4zODE1VjE4LjlINDYuMzgxNVpNNDguNzE0OCAxMy4zSDUyLjIxNDhWMTAuNUg0OC43MTQ4VjEzLjNaTTQ4LjcxNDggMTcuNUg1Mi4yMTQ4VjE0LjdINDguNzE0OFYxNy41WiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzQyNTdfMjY0MSkiLz4KPHBhdGggZD0iTTU2LjM2OTQgMTguOVY5LjFINTguNzAyOFYxNy41SDYzLjU0NDRWMTguOUg1Ni4zNjk0WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzQyNTdfMjY0MSkiLz4KPHBhdGggZD0iTTY1LjA3NDEgMTguOVYxMS45SDY2LjI0MDdWMTAuNUg2Ny40MDc0VjkuMUg3MC45MDc0VjEwLjVINzIuMDc0MVYxMS45SDczLjI0MDdWMTguOUg3MC45MDc0VjE2LjFINjcuNDA3NFYxOC45SDY1LjA3NDFaTTY3LjQwNzQgMTQuN0g3MC45MDc0VjExLjlINjkuNzQwN1YxMC41SDY4LjU3NDFWMTEuOUg2Ny40MDc0VjE0LjdaIiBmaWxsPSJ1cmwoI3BhaW50Ml9saW5lYXJfNDI1N18yNjQxKSIvPgo8cGF0aCBkPSJNNzUuNTg3IDE4LjlWMTcuNUg3NC40MjA0VjE2LjFINzYuNzUzN1YxNy41SDgwLjI1MzdWMTQuN0g3NS41ODdWMTMuM0g3NC40MjA0VjEwLjVINzUuNTg3VjkuMUg4MS40MjA0VjEwLjVIODIuNTg3VjExLjlIODAuMjUzN1YxMC41SDc2Ljc1MzdWMTMuM0g4MS40MjA0VjE0LjdIODIuNTg3VjE3LjVIODEuNDIwNFYxOC45SDc1LjU4N1oiIGZpbGw9InVybCgjcGFpbnQzX2xpbmVhcl80MjU3XzI2NDEpIi8+CjxwYXRoIGQ9Ik04Ni41NjY3IDE4LjlWMTAuNUg4NC4yMzMzVjkuMUg5MS4yMzMzVjEwLjVIODguOVYxOC45SDg2LjU2NjdaIiBmaWxsPSJ1cmwoI3BhaW50NF9saW5lYXJfNDI1N18yNjQxKSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzQyNTdfMjY0MSIgeDE9IjQ3LjExMDciIHkxPSIxMC43NzQ3IiB4Mj0iODguODIyMiIgeTI9IjI3LjU5MjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOUU1NSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNTgwMzciLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDFfbGluZWFyXzQyNTdfMjY0MSIgeDE9IjQ3LjExMDciIHkxPSIxMC43NzQ3IiB4Mj0iODguODIyMiIgeTI9IjI3LjU5MjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOUU1NSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNTgwMzciLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDJfbGluZWFyXzQyNTdfMjY0MSIgeDE9IjQ3LjExMDciIHkxPSIxMC43NzQ3IiB4Mj0iODguODIyMiIgeTI9IjI3LjU5MjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOUU1NSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNTgwMzciLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDNfbGluZWFyXzQyNTdfMjY0MSIgeDE9IjQ3LjExMDciIHkxPSIxMC43NzQ3IiB4Mj0iODguODIyMiIgeTI9IjI3LjU5MjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOUU1NSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNTgwMzciLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDRfbGluZWFyXzQyNTdfMjY0MSIgeDE9IjQ3LjExMDciIHkxPSIxMC43NzQ3IiB4Mj0iODguODIyMiIgeTI9IjI3LjU5MjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOUU1NSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNTgwMzciLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K"
+            />
+            <div
+              className="outer_JLRTAg2D7U logoHint_RZSTYk55IX"
+              style={{ cursor: "pointer" }}
+            >
+              <svg
+                width={12}
+                height={12}
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 0C4.81331 0 3.65328 0.351894 2.66658 1.01118C1.67989 1.67047 0.910851 2.60754 0.456725 3.7039C0.00259969 4.80025 -0.11622 6.00665 0.115291 7.17054C0.346802 8.33443 0.918247 9.40352 1.75736 10.2426C2.59648 11.0818 3.66557 11.6532 4.82946 11.8847C5.99335 12.1162 7.19975 11.9974 8.2961 11.5433C9.39246 11.0891 10.3295 10.3201 10.9888 9.33342C11.6481 8.34673 12 7.18669 12 6C12 4.4087 11.3679 2.88258 10.2426 1.75736C9.11742 0.632141 7.5913 0 6 0ZM7.032 9.0948C7.00573 9.12809 6.97458 9.15721 6.9396 9.1812C6.45741 9.52574 5.88101 9.71383 5.2884 9.72C4.746 9.72 4.4484 9.342 4.5684 8.814C4.7196 8.1804 4.8768 7.5492 5.0304 6.9168C5.05192 6.86108 5.06226 6.80167 5.06081 6.74196C5.05937 6.68225 5.04618 6.62341 5.022 6.5688C4.97557 6.49384 4.90484 6.43708 4.8216 6.408C4.7753 6.39517 4.72789 6.38673 4.68 6.3828C4.6224 6.3696 4.5372 6.36 4.4952 6.2964L4.482 6.276C4.4671 6.25433 4.45672 6.22988 4.45149 6.20411C4.44625 6.17834 4.44627 6.15177 4.45153 6.12601C4.4568 6.10024 4.46721 6.07581 4.48213 6.05416C4.49706 6.0325 4.5162 6.01408 4.5384 6L4.6476 5.928L4.8096 5.838C4.90601 5.78761 5.00539 5.74313 5.1072 5.7048C5.31513 5.62258 5.53054 5.56069 5.7504 5.52C5.88327 5.49633 6.01757 5.4815 6.1524 5.4756C6.26136 5.47515 6.37003 5.48682 6.4764 5.5104C6.8664 5.604 7.062 5.9508 6.9564 6.3732C6.8064 7.0116 6.6468 7.6476 6.4908 8.28C6.4164 8.5824 6.4908 8.7144 6.7956 8.796C6.8412 8.808 6.888 8.8164 6.9348 8.8272C7.092 8.868 7.1292 8.9664 7.032 9.0948ZM6.5196 4.3284C6.31661 4.32743 6.11849 4.26621 5.95034 4.15249C5.7822 4.03877 5.65162 3.87767 5.57516 3.68963C5.49869 3.5016 5.4798 3.29509 5.52086 3.09629C5.56193 2.8975 5.6611 2.71538 5.80581 2.57303C5.95052 2.43068 6.13425 2.33451 6.33369 2.29673C6.53313 2.25894 6.7393 2.28123 6.92606 2.36077C7.11281 2.44032 7.27174 2.57353 7.38268 2.74352C7.49362 2.91352 7.55158 3.11262 7.5492 3.3156C7.54541 3.58594 7.43519 3.84389 7.24244 4.03349C7.0497 4.22309 6.78997 4.32906 6.5196 4.3284Z"
+                  fill="rgba(192, 207, 251, 0.7490196078)"
+                  fillOpacity="0.5"
+                />
+              </svg>
+            </div>
+            <div
+              onClick={handleOpenLobby}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "10px",
+                padding: "3px 15px",
+                fontSize: "12px",
+                fontWeight: 600,
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "gray",
+                borderRadius: "9999px",
+                cursor: "pointer",
+                width: "fit-content",
+                color: "white",
+                marginLeft: "5px",
+              }}
+            >
+              <svg
+                style={{ width: "1rem", height: "1rem" }}
+                width={25}
+                height={24}
+                viewBox="0 0 139 127"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24.6002 85.1415L7.5002 97.3415C6.7002 96.4415 6.0002 95.4415 5.4002 94.3415C3.0002 90.5415 1.5002 86.4415 0.700195 82.1415C1.1002 79.6415 1.7002 77.1415 2.5002 74.6415L18.9002 69.2415C19.0002 74.0415 20.3002 78.4415 22.8002 82.4415C23.3002 83.4415 23.9002 84.2415 24.6002 85.1415Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M25.4002 46.3414L20.7002 45.3414C25.5002 40.2414 31.0002 35.4414 37.2002 31.0414C37.7002 30.6414 38.3002 30.3414 38.8002 29.9414L39.2002 30.3414H39.1002C33.5002 35.3414 28.9002 40.7414 25.4002 46.3414Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M74.1001 123.041C73.4001 123.241 72.7001 123.441 72.0001 123.541C61.7001 126.041 51.6001 126.941 42.4001 126.141L36.1001 112.241C36.8001 112.341 37.5001 112.441 38.3001 112.541C47.7001 113.541 58.1001 112.441 68.7001 109.241V108.941L74.1001 123.041Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M68.8002 109.141C58.2002 112.341 47.8002 113.441 38.4002 112.441C37.7002 112.341 36.9002 112.341 36.2002 112.141L46.2002 95.3415C52.7002 96.0415 59.9002 95.3415 67.2002 93.2415L67.9002 106.241L68.8002 108.641V109.141Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M64.9999 18.0415L64.8999 16.4415C67.8999 15.2415 70.9999 14.3415 73.9999 13.4415C79.1999 11.9415 84.3999 10.8415 89.3999 10.2415L86.5999 15.3415C79.8999 14.7415 72.4999 15.6415 64.9999 18.0415Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M87.4001 77.7414C86.1001 78.6414 84.8001 79.5414 83.5001 80.4414C77.7001 84.1414 71.6001 86.7414 65.6001 88.2414C57.5001 90.3414 49.7001 90.5414 43.1001 88.7414C40.0001 87.9414 37.2001 86.6414 34.7001 85.0414C32.1001 83.3414 30.0001 81.1414 28.3001 78.5414C26.7001 76.0414 25.7001 73.2414 25.3001 70.2414C24.5001 65.0414 25.4001 59.3414 27.7001 53.7414C31.0001 45.8414 37.2001 37.8414 45.7001 31.4414C47.3001 30.2414 48.9001 29.1414 50.6001 28.0414C55.7001 24.8414 61.0001 22.4414 66.2001 20.8414C71.4001 19.2414 76.5001 18.4414 81.3001 18.4414C85.1001 18.4414 88.7001 18.9414 92.0001 19.9414C93.6001 20.4414 95.2001 21.0414 96.6001 21.7414C100.4 23.6414 103.6 26.3414 105.8 29.9414C108 33.3414 109 37.3414 109.1 41.4414C109.2 46.1414 108 51.2414 105.7 56.2414C102.2 63.9414 95.9001 71.6414 87.4001 77.7414Z"
+                  fill="transparent"
+                />
+                <path
+                  d="M129.2 81.8414C123.9 93.0414 117.2 99.8414 110.9 104.041C110.7 104.241 110.4 104.341 110.2 104.541L106.3 88.9414L105.1 84.3414L96.7998 77.2414C101.7 72.9414 105.8 68.2414 109 63.3414L126.2 66.3414V66.4414C127.2 71.5414 128.2 76.7414 129.2 81.8414Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M138.5 42.9414L134 34.3414L114.7 41.2414C114.6 36.3414 113.4 31.7414 110.8 27.7414C110.3 26.9414 109.7 26.0414 109 25.3414L125.8 14.0414C136 24.2414 138.5 42.9414 138.5 42.9414Z"
+                  fill="#929292"
+                />
+                <path
+                  d="M133.9 34.4414L114.7 41.2414C114.6 36.3414 113.4 31.7414 110.8 27.7414C110.3 26.9414 109.7 26.0414 109 25.3414L125.8 14.0414C126.8 15.2414 127.7 16.4414 128.5 17.7414C131.8 22.6414 133.5 28.3414 133.9 34.4414Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M39.3 30.4414C33.5 35.3414 28.9002 40.7414 25.4002 46.3414L20.7002 45.3414L10 43.0414C14.9 35.3414 21.5 27.9414 29.4 21.3414L38.8 30.0414L39.3 30.4414Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M68.8002 109.141C58.2002 112.341 47.8002 113.441 38.4002 112.441C37.7002 112.341 36.9002 112.341 36.2002 112.141L46.2002 95.3415C52.7002 96.0415 59.9002 95.3415 67.2002 93.2415C67.5002 93.1415 67.7002 93.1414 67.9002 93.0414L68.7002 108.641L68.8002 109.141Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M24.6002 85.1415L7.5002 97.3415C6.7002 96.4415 6.0002 95.4415 5.4002 94.3415C3.0002 90.5415 1.5002 86.4415 0.700195 82.1415C0.300195 79.9415 0.1 77.7415 0 75.5415L2.5 74.7415L18.9002 69.2415C19.0002 74.0415 20.3002 78.4415 22.8002 82.4415C23.3002 83.4415 23.9002 84.2415 24.6002 85.1415Z"
+                  fill="url(#paint0_linear_693_22)"
+                />
+                <path
+                  d="M95.1001 0.141422L89.5001 10.2414L86.7001 15.3414C80.0001 14.8414 72.6001 15.7414 65.1001 18.1414L65.0001 16.5414L64.6001 4.14142C73.3001 1.44142 81.8001 0.0414213 89.8001 0.0414213C91.5001 -0.0585787 93.3001 0.0414217 95.1001 0.141422Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M126.2 66.3414C126.2 66.4414 126.2 66.4414 126.2 66.3414C121.2 74.4414 114.5 82.1414 106.2 88.9414C106.2 88.9414 106.1 88.9414 106.1 89.0414L94.6001 79.1414C95.3001 78.5414 96.1001 77.9414 96.8001 77.3414C101.7 73.0414 105.8 68.3414 109 63.4414L126.2 66.3414Z"
+                  fill="currentColor"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_693_22"
+                    x1="-373.769"
+                    y1="63.3372"
+                    x2="314.773"
+                    y2="63.3372"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="currentColor" />
+                    <stop offset="0.5594" stopColor="currentColor" />
+                    <stop offset={1} stopColor="currentColor" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <span style={{ color: "white" }}>Lobby</span>
+            </div>
+          </div>
+        </div>
+        <div className="wrapper__LOKnxBxT0">
+          <div className="balance_NO6YYy2sX1">
+            <div className="wrapper_PYNnzpEcD1">
+              <span
+                className="icon_ctc98B_bjL balanceCurrency_nPhJnzLBnm"
+                style={{ fontSize: "11px" }}
+              >
+                ₹
+              </span>
+              <span className="balanceValue_aPZxlKWldG">{balance}</span>
+            </div>
+          </div>
+        </div>
+        <div className="item_JxLkbyoiUR itemDesktop_vMDfOOH3Rw">
+          <div
+            className="outer_JLRTAg2D7U itemIcon_Daw1IRIfMw"
+            style={{ cursor: "pointer" }}
+          >
+            <svg
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.3999 8.4L4.88401 12.6191C4.57008 12.9958 4.41312 13.1841 4.41072 13.3432C4.40864 13.4815 4.47026 13.6131 4.57783 13.7C4.70158 13.8 4.94676 13.8 5.43713 13.8H11.9999L11.0999 21L15.5999 15.6M15.2849 10.2H18.5627C19.053 10.2 19.2982 10.2 19.422 10.3C19.5295 10.3869 19.5912 10.5185 19.5891 10.6568C19.5867 10.8159 19.4297 11.0042 19.1158 11.3809L17.8951 12.8457M10.7154 5.62138L12.8999 3L12.3601 7.31794M20.0999 20.1L3.8999 3.9"
+                stroke="rgba(184, 201, 251, 0.5019607843)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="circle_OfWbFQzRWi" />
+          </div>
+        </div>
+        <div className="anchor_eEBVix7V52">
+          <div className="item_JxLkbyoiUR itemDesktop_vMDfOOH3Rw">
+            <div
+              className="outer_JLRTAg2D7U itemIcon_Daw1IRIfMw"
+              style={{ cursor: "pointer" }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M2.45622 14.3516C1.58775 12.9042 1.58775 11.0959 2.45622 9.64843C2.7924 9.08814 3.34934 8.69565 3.99007 8.5675L5.55577 8.25436L7.54173 5.87121L7.58256 5.82222L7.58257 5.8222L7.58258 5.82219C8.13897 5.15445 8.61142 4.58745 9.01426 4.21882C9.38429 3.88023 10.0026 3.41744 10.7503 3.68813C11.4979 3.95881 11.6767 4.7102 11.7442 5.2072C11.8177 5.74829 11.8177 6.48633 11.8176 7.35552L11.8176 7.4193V16.5807L11.8176 16.6445C11.8177 17.5137 11.8177 18.2517 11.7442 18.7928C11.6767 19.2898 11.4979 20.0412 10.7503 20.3119C10.0026 20.5826 9.38429 20.1198 9.01426 19.7812C8.61142 19.4126 8.13897 18.8456 7.58257 18.1778L7.54173 18.1288L5.55577 15.7457L3.99007 15.4325C3.34934 15.3044 2.7924 14.9119 2.45622 14.3516ZM3.85939 10.4903C3.30185 11.4196 3.30185 12.5805 3.85939 13.5097C3.95837 13.6747 4.12234 13.7902 4.31099 13.8279L6.00401 14.1665C6.28814 14.2234 6.54424 14.3758 6.72974 14.5983L8.79882 17.0812C9.40721 17.8113 9.80842 18.2898 10.1189 18.574L10.1221 18.5769L10.1227 18.5726C10.1794 18.1555 10.1812 17.5311 10.1812 16.5807V7.4193C10.1812 6.46896 10.1794 5.84449 10.1227 5.4274L10.1221 5.42312L10.1189 5.42604C9.80842 5.71019 9.40721 6.18872 8.79882 6.91879L6.72974 9.40169C6.54424 9.62428 6.28814 9.77666 6.00401 9.83348L4.31098 10.1721C4.12234 10.2098 3.95837 10.3254 3.85939 10.4903ZM10.3711 5.23512C10.371 5.23545 10.3676 5.23707 10.3614 5.23902C10.3681 5.23577 10.3712 5.2348 10.3711 5.23512ZM10.0562 5.12851C10.0526 5.12303 10.0511 5.11966 10.0513 5.11934C10.0514 5.11903 10.0532 5.12177 10.0562 5.12851ZM10.0513 18.8807C10.0511 18.8804 10.0526 18.877 10.0562 18.8715C10.0532 18.8783 10.0514 18.881 10.0513 18.8807ZM10.3614 18.761C10.3676 18.763 10.371 18.7646 10.3711 18.7649C10.3712 18.7652 10.3681 18.7643 10.3614 18.761ZM14.9571 7.8859C15.2766 7.56638 15.7947 7.56638 16.1142 7.8859C17.1997 8.9714 17.8122 10.4419 17.8183 11.9771C17.8243 13.5122 17.2234 14.9875 16.1465 16.0815C15.8295 16.4035 15.3115 16.4076 14.9895 16.0906C14.6674 15.7736 14.6633 15.2556 14.9803 14.9336C15.7544 14.1472 16.1863 13.0869 16.1819 11.9835C16.1776 10.8801 15.7373 9.82319 14.9571 9.04298C14.6376 8.72346 14.6376 8.20542 14.9571 7.8859ZM20.2354 5.76457C19.9159 5.44506 19.3979 5.44506 19.0784 5.76458C18.7588 6.08409 18.7588 6.60214 19.0784 6.92166C20.4183 8.26158 21.1743 10.0768 21.1818 11.9717C21.1893 13.8666 20.4475 15.6877 19.1182 17.0381C18.8012 17.3601 18.8053 17.8782 19.1273 18.1952C19.4494 18.5122 19.9674 18.5081 20.2844 18.186C21.9166 16.5279 22.8273 14.2919 22.8182 11.9652C22.809 9.63856 21.8807 7.40979 20.2354 5.76457Z"
+                  fill="rgba(231, 237, 254, 0.8980392157)"
+                />
+              </svg>
+            </div>
+          </div>
+          <div className="slider_KFmGR3miW8 sliderDesktop_r2qK5Q6RbP">
+            <div className="track_de4SrCm6ga trackVertical_cNZpFHUygk sliderTrack_DD45_YsDqq">
+              <div
+                className="rail_OkZ_b9rwIV railVertical_ESIhaU0DH3"
+                style={{ height: "10.4982px" }}
+              />
+              <span
+                data-thumb="true"
+                className="thumb_gQFq9T4Egb thumbVertical_iyoENuCo8_ sliderThumb_jcrsLEkjeq"
+                style={{ bottom: "2.4994px" }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="item_JxLkbyoiUR itemDesktop_vMDfOOH3Rw">
+          <div
+            className="outer_JLRTAg2D7U itemIcon_Daw1IRIfMw"
+            style={{ cursor: "pointer" }}
+          >
+            <svg
+              width={22}
+              height={22}
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.47794 16.4685C3.27169 16.4685 3.09881 16.3988 2.95928 16.2592C2.81976 16.1196 2.75 15.9466 2.75 15.7403C2.75 15.5339 2.81976 15.3611 2.95928 15.2217C3.09881 15.0824 3.27169 15.0127 3.47794 15.0127H18.5221C18.7283 15.0127 18.9012 15.0825 19.0407 15.2221C19.1802 15.3616 19.25 15.5346 19.25 15.7409C19.25 15.9473 19.1802 16.1201 19.0407 16.2595C18.9012 16.3989 18.7283 16.4685 18.5221 16.4685H3.47794ZM3.47794 11.7276C3.27169 11.7276 3.09881 11.6578 2.95928 11.5182C2.81976 11.3786 2.75 11.2057 2.75 10.9993C2.75 10.793 2.81976 10.6201 2.95928 10.4808C3.09881 10.3414 3.27169 10.2717 3.47794 10.2717H18.5221C18.7283 10.2717 18.9012 10.3415 19.0407 10.4811C19.1802 10.6207 19.25 10.7936 19.25 11C19.25 11.2063 19.1802 11.3792 19.0407 11.5185C18.9012 11.6579 18.7283 11.7276 18.5221 11.7276H3.47794ZM3.47794 6.98662C3.27169 6.98662 3.09881 6.91683 2.95928 6.77724C2.81976 6.63767 2.75 6.46471 2.75 6.25836C2.75 6.05203 2.81976 5.87919 2.95928 5.73983C3.09881 5.60045 3.27169 5.53076 3.47794 5.53076H18.5221C18.7283 5.53076 18.9012 5.60055 19.0407 5.74014C19.1802 5.87973 19.25 6.05269 19.25 6.25902C19.25 6.46537 19.1802 6.63822 19.0407 6.77758C18.9012 6.91694 18.7283 6.98662 18.5221 6.98662H3.47794Z"
+                fill="rgba(192, 207, 251, 0.7490196078)"
+              />
+            </svg>
+          </div>
+        </div>
+      </header>
+    </div>
+  );
+};
+
+export default Navbar;
