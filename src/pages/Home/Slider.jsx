@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { PrevButton, NextButton, usePrevNextButtons } from "./SliderButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import { setBoxId } from "../../redux/features/global/globalSlice";
+import { useCallback, useEffect } from "react";
 
 const Slider = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,17 @@ const Slider = () => {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
+
+  const onSelect = useCallback((emblaApi) => {
+    dispatch(setBoxId(emblaApi?.selectedScrollSnap() + 1));
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onSelect).on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
   const sliderData = [
     {
@@ -485,7 +497,7 @@ const Slider = () => {
             //   transform: `translate3d(-${translate}px, 0px, 0px)`,
             // }}
           >
-            {sliderData.map((item) => {
+            {sliderData?.map((item) => {
               return (
                 <div onClick={() => dispatch(setBoxId(item.id))} key={item.id}>
                   {item.element}

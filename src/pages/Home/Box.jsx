@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 const Box = () => {
   const { boxId } = useSelector((state) => state.global);
 
+  console.log(boxId);
+
   const [boxes, setBoxes] = useState([]);
 
   useEffect(() => {
